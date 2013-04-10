@@ -1,0 +1,14 @@
+Start
+- if @matches.empty?
+  No Matches
+- else
+  %table
+    %tr
+      %th Match ID
+      %th Started At
+      %ht Ended At
+    - @matches.each do |match|
+      %tr
+        %td= match.id
+        %td
+        %td
