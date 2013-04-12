@@ -11,7 +11,12 @@ class MatchesController < ApplicationController
     players.each do |player|
       @match.games.create(:player => player)
     end
-    render :nothing => true
+    redirect_to match_path(@match)
+  end
+
+  def show
+    @match = Match.find(params[:id])
+    respond_with @match
   end
 
 end

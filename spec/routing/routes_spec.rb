@@ -17,6 +17,14 @@ describe 'Routes' do
              :action     => 'create'
            )
     end
+    it 'should route to matches#show' do
+      expect(:get => '/matches/23').
+        to route_to(
+             :controller => 'matches',
+             :action     => 'show',
+             :id         => '23'
+           )
+    end
   end
 
   context '/current_match' do

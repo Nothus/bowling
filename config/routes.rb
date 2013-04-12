@@ -2,7 +2,7 @@ Bowling::Application.routes.draw do
 
   root :to => redirect('/matches')
 
-  resources :matches, :only => [:index, :create]
+  resources :matches, :only => [:index, :create, :show]
   resource :current_match, :only => [:show], :controller => 'current_match'
 
   # The priority is based upon order of creation:

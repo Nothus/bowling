@@ -43,6 +43,24 @@ describe MatchesController do
       games[0].player.should == 'Player 1'
       games[1].player.should == 'Player 2'
     end
+    it 'should redirect' do
+      post :create, @params
+      match = assigns[:match]
+      response.should redirect_to "/matches/#{match.id}"
+    end
   end
 
+  describe 'GET #show' do
+    before :each do
+      @match = FactoryGirl.create(:match)
+    end
+    it 'should assign the match' do
+      get :show, {:id => @match.id}
+      assigns[:match].should == @match
+    end
+    it 'should render the template' do
+      get :show, {:id => @match.id}
+      response.should render_template 'show'
+    end
+  end
 end
