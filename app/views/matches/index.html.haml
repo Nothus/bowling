@@ -1,4 +1,19 @@
-Start
+- unless Match.current_match
+  = form_tag matches_path, :method => :post, :id => 'new-match' do
+    = label_tag 'player' do
+      Player
+      = text_field_tag('player[]', nil, :id => 'player1')
+    = label_tag 'player' do
+      Player
+      = text_field_tag 'player[]', nil, :id => 'player2'
+    = label_tag 'player' do
+      Player
+      = text_field_tag 'player[]', nil, :id => 'player3'
+    = label_tag 'player' do
+      Player
+      = text_field_tag 'player[]', nil, :id => 'player4'
+    = submit_tag 'Start'
+
 - if @matches.empty?
   No Matches
 - else
