@@ -2,26 +2,15 @@
   %tr
     %th
       Player
-    %th
-      Frome 1
-    %th
-      Frome 2
-    %th
-      Frome 3
-    %th
-      Frome 4
-    %th
-      Frome 5
-    %th
-      Frome 6
-    %th
-      Frome 7
-    %th
-      Frome 8
-    %th
-      Frome 9
-    %th
+    - 9.times.each do |frame|
+      %th{:colspan => 2}= "Frame #{frame + 1}"
+    %th{:colspan => 3}
       Frome 10
   - @match.games.each do |game|
     %tr
-      %td= game.player
+      %td{:rowspan => 2}= game.player
+      - 21.times.each do |roll|
+        %td= game.display_roll(roll + 1)
+    %tr
+      - 10.times.each do |frame|
+        %td{:colspan => 2}= game.display_frame(frame + 1)

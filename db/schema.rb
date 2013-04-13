@@ -13,36 +13,26 @@
 
 ActiveRecord::Schema.define(:version => 20130409234015) do
 
+  create_table "frames", :force => true do |t|
+    t.integer "game_id"
+    t.integer "number"
+  end
+
   create_table "games", :force => true do |t|
     t.integer "match_id"
     t.string  "player"
     t.integer "next_game_id"
-    t.integer "frame1_1"
-    t.integer "frame1_2"
-    t.integer "frame2_1"
-    t.integer "frame2_2"
-    t.integer "frame3_1"
-    t.integer "frame3_2"
-    t.integer "frame4_1"
-    t.integer "frame4_2"
-    t.integer "frame5_1"
-    t.integer "frame5_2"
-    t.integer "frame6_1"
-    t.integer "frame6_2"
-    t.integer "frame7_1"
-    t.integer "frame7_2"
-    t.integer "frame8_1"
-    t.integer "frame8_2"
-    t.integer "frame9_1"
-    t.integer "frame9_2"
-    t.integer "frame10_1"
-    t.integer "frame10_2"
-    t.integer "frame10_3"
   end
 
   create_table "matches", :force => true do |t|
     t.datetime "started_at", :null => false
     t.datetime "ended_at"
+  end
+
+  create_table "rolls", :force => true do |t|
+    t.integer "frame_id"
+    t.integer "pins"
+    t.boolean "is_foul",  :default => false
   end
 
 end

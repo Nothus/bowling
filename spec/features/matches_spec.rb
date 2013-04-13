@@ -31,4 +31,11 @@ describe '/matches' do
     end
 
   end
+
+  describe 'GET /matches/:id' do
+    before :each do
+      @match = FactoryGirl.create(:match_started)
+    end
+
+  end
 end

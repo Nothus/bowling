@@ -10,37 +10,17 @@ class InitialDatabase < ActiveRecord::Migration
 
       t.string :player
       t.integer :next_game_id
+    end
 
-      t.integer :frame1_1, :default => nil
-      t.integer :frame1_2, :default => nil
+    create_table :frames do |t|
+      t.integer :game_id
+      t.integer :number
+    end
 
-      t.integer :frame2_1, :default => nil
-      t.integer :frame2_2, :default => nil
-
-      t.integer :frame3_1, :default => nil
-      t.integer :frame3_2, :default => nil
-
-      t.integer :frame4_1, :default => nil
-      t.integer :frame4_2, :default => nil
-
-      t.integer :frame5_1, :default => nil
-      t.integer :frame5_2, :default => nil
-
-      t.integer :frame6_1, :default => nil
-      t.integer :frame6_2, :default => nil
-
-      t.integer :frame7_1, :default => nil
-      t.integer :frame7_2, :default => nil
-
-      t.integer :frame8_1, :default => nil
-      t.integer :frame8_2, :default => nil
-
-      t.integer :frame9_1, :default => nil
-      t.integer :frame9_2, :default => nil
-
-      t.integer :frame10_1, :default => nil
-      t.integer :frame10_2, :default => nil
-      t.integer :frame10_3, :default => nil
+    create_table :rolls do |t|
+      t.integer :frame_id
+      t.integer :pins
+      t.boolean :is_foul, :default => false
     end
   end
 end
