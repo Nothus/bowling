@@ -30,9 +30,12 @@ ActiveRecord::Schema.define(:version => 20130409234015) do
   end
 
   create_table "rolls", :force => true do |t|
-    t.integer "frame_id"
-    t.integer "pins"
-    t.boolean "is_foul",  :default => false
+    t.integer  "frame_id"
+    t.integer  "pins"
+    t.integer  "number"
+    t.boolean  "is_foul",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
 end

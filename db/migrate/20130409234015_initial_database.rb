@@ -20,7 +20,10 @@ class InitialDatabase < ActiveRecord::Migration
     create_table :rolls do |t|
       t.integer :frame_id
       t.integer :pins
+      t.integer :number
       t.boolean :is_foul, :default => false
+
+      t.timestamps
     end
   end
 end
