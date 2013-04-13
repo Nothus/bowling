@@ -13,7 +13,7 @@ class Game < ActiveRecord::Base
     frame = frames.where(:number => number).first
 
     if displayable_frame? frame
-      return frames.reduce(0) { |sum, frame| sum + frame.score }
+      return frames.take(number).reduce(0) { |sum, frame| sum + frame.score }
     else
       return ''
     end

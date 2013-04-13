@@ -40,7 +40,20 @@ describe Game do
           @frame2 = FactoryGirl.create(:frame, :game => @game, :number => 2)
           FactoryGirl.create(:roll, :frame => @frame2, :pins => 6)
           FactoryGirl.create(:roll, :frame => @frame2, :pins => 1)
+          @game.display_frame(1).should == 9
           @game.display_frame(2).should == 16
+        end
+      end
+      context 'and one spare' do
+        it 'should return the total' do
+          @frame1 = FactoryGirl.create(:frame, :game => @game, :number => 1)
+          FactoryGirl.create(:roll, :frame => @frame1, :pins => 7)
+          FactoryGirl.create(:roll, :frame => @frame1, :pins => 3)
+          @frame2 = FactoryGirl.create(:frame, :game => @game, :number => 2)
+          FactoryGirl.create(:roll, :frame => @frame2, :pins => 4)
+          FactoryGirl.create(:roll, :frame => @frame2, :pins => 1)
+          @game.display_frame(1).should == 14
+          @game.display_frame(2).should == 19
         end
       end
     end
