@@ -22,6 +22,7 @@ class InitialDatabase < ActiveRecord::Migration
       t.integer :pins
       t.integer :number
       t.boolean :is_foul, :default => false
+      t.boolean :is_split, :default => false
 
       t.timestamps
     end

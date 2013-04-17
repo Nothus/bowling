@@ -7,8 +7,11 @@ describe Game do
   end
 
   describe '#display_roll(number)' do
-    it 'should return an empty string if they have not rolled it yet' do
-      @game.display_roll(1).should == ''
+    context 'with a non displayable roll' do
+      it 'should return an empty string' do
+        @game.stub(:displayable_roll?).and_return(false)
+        @game.display_roll(1).should == ''
+      end
     end
   end
 
@@ -72,6 +75,20 @@ describe Game do
         FactoryGirl.create(:roll, :frame => frame, :pins => 1)
         @game.displayable_frame?(frame).should == true
       end
+    end
+  end
+
+  describe '#roll_from_number(number)' do
+    it 'should return the roll' do
+      @frame = FactoryGirl.create(:frame, :game => @game, :number => 1)
+      roll = FactoryGirl.create(:roll, :frame => @frame, :pins => 7)
+      @game.roll_from_number(1).should == roll
+    end
+    it 'should return the second roll' do
+      @frame = FactoryGirl.create(:frame, :game => @game, :number => 1)
+      FactoryGirl.create(:roll, :frame => @frame, :pins => 7)
+      roll = FactoryGirl.create(:roll, :frame => @frame, :pins => 3)
+      @game.roll_from_number(2).should == roll
     end
   end
 

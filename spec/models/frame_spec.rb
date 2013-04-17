@@ -70,7 +70,6 @@ describe Frame do
       FactoryGirl.create(:roll, :frame => frame3, :pins => 1)
       frame1.score.should == 15
     end
-    it 'should return'
   end
 
   describe '#next_frame' do

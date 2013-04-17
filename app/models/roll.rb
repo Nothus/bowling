@@ -6,6 +6,22 @@ class Roll < ActiveRecord::Base
 
   validates_presence_of :number, :pins
 
+  def to_s
+    if pins == 10
+      'X'
+    elsif is_foul
+      'F'
+    elsif is_split
+      "S #{pins}"
+    elsif pins == 0
+      '-'
+    elsif number == 2 && frame.first_roll.pins + pins == 10
+      '/'
+    else
+      pins.to_s
+    end
+  end
+
   private
 
   def number!

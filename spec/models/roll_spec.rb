@@ -25,4 +25,35 @@ describe Roll do
     end
   end
 
+  describe '#to_s' do
+    before :each do
+      @frame = FactoryGirl.create(:frame, :game => FactoryGirl.create(:game))
+    end
+    it 'should display the number of pins knocked down' do
+      roll = FactoryGirl.build(:roll, :frame => @frame, :pins => 7)
+      roll.to_s.should == '7'
+    end
+    it 'should display an X' do
+      roll = FactoryGirl.build(:roll, :frame => @frame, :pins => 10)
+      roll.to_s.should == 'X'
+    end
+    it 'should display a /' do
+      FactoryGirl.create(:roll, :frame => @frame, :pins => 6)
+      roll = FactoryGirl.create(:roll, :frame => @frame, :pins => 4)
+      roll.to_s.should == '/'
+    end
+    it 'should display a -' do
+      roll = FactoryGirl.build(:roll, :frame => @frame, :pins => 0)
+      roll.to_s.should == '-'
+    end
+    it 'should display an F' do
+      roll = FactoryGirl.build(:roll, :frame => @frame, :pins => 0, :is_foul => true)
+      roll.to_s.should == 'F'
+    end
+    it 'should display an S' do
+      roll = FactoryGirl.build(:roll, :frame => @frame, :pins => 4, :is_split => true)
+      roll.to_s.should == 'S 4'
+    end
+  end
+
 end

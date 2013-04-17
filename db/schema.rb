@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20130409234015) do
     t.integer  "pins"
     t.integer  "number"
     t.boolean  "is_foul",    :default => false
+    t.boolean  "is_split",   :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
   end
